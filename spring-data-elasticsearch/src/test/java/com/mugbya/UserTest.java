@@ -9,7 +9,11 @@ import org.junit.Test;
 import org.springframework.data.elasticsearch.core.SearchHit;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -33,6 +37,7 @@ public class UserTest {
             user.setGender("男");
             user.setDesc("a man");
             user.setStatue(ENABLE);
+            user.setCreateTime(new Date());
             userList.add(user);
         }
         userService.batchSave(userList);
