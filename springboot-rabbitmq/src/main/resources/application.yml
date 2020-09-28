@@ -11,5 +11,6 @@ spring:
     publisher-returns: true
     listener:
       simple:
-        acknowledge-mode: auto
-#        acknowledge-mode: manual
+#        acknowledge-mode: auto
+        acknowledge-mode: manual
+#        prefetch:
