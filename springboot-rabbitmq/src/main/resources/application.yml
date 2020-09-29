@@ -11,6 +11,11 @@ spring:
     publisher-returns: true
     listener:
       simple:
-#        acknowledge-mode: auto
-        acknowledge-mode: manual
-#        prefetch:
+#        acknowledge-mode: auto  # 启动选择模式
+        acknowledge-mode: none  # 自动应答模式
+#        retry:
+#          enabled: true
+#          max-attempts: 4
+#          initial-interval: 3000
+#        acknowledge-mode: manual # 手工应答模式
+#        prefetch: 2

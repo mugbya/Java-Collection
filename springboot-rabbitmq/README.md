@@ -2,7 +2,9 @@
 
 springboot 2.3.0 下 publisher-confirms 发送消息确认方式已经被弃用
 
-springboot 2.3.0 以前 发布确认只有两种方式，2.3.0开始有三种方式：none, simple, correlated
+## 发布确认应答
+
+springboot 2.3.0 以前 发布确认`publisher-confirm-type`只有两种方式，2.3.0开始有三种方式：none, simple, correlated
 
 
 - none: 是禁用发布确认模式，是默认值
@@ -11,6 +13,16 @@ springboot 2.3.0 以前 发布确认只有两种方式，2.3.0开始有三种方
         其一效果和correlated值一样会触发回调方法，
         其二在发布消息成功后使用rabbitTemplate调用waitForConfirms或waitForConfirmsOrDie方法等待broker节点返回发送结果，根据返回结果来判定下一步的逻辑，要注意的点是waitForConfirmsOrDie方法如果返回false则会关闭channel，则接下来无法发送消息到broker;
 
+
+## 接受确认应答
+
+`spring.rabbitmq.listener.simple.acknowledge-mode` 也有是三个值
+
+- none: 这才是自动确认
+- auto: 根据情况确认(有点结合体的意味)
+- manual: 手工确认
+
+> 一定要注意 none 才是自动确认啊！！！
 
 
 ## Dead Letter Exchanges
@@ -27,8 +39,6 @@ springboot 2.3.0 以前 发布确认只有两种方式，2.3.0开始有三种方
 
 
 
-
-## 
 
 延迟可以支持对Queue设置超时时间，也能在发送消息时对消息设置超时时间
 
@@ -77,8 +87,6 @@ springboot 2.3.0 以前 发布确认只有两种方式，2.3.0开始有三种方
 其他参考链接：
 
 - [RabbitMQ延迟队列](https://segmentfault.com/a/1190000015369917)
-
-- 反向利用：https://www.sunnyblog.top/detail.html?id=1265257400324063232
 
 
 
